@@ -362,7 +362,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\helping files;.\MCAL\PORT;.\MCAL\DIO;.\ECUAL\PUSH_BUTTON;.\ECUAL\LCD</IncludePath>
+              <IncludePath>.\common_files;.\MCAL\PORT;.\MCAL\DIO;.\ECUAL\PUSH_BUTTON;.\ECUAL\LCD</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -414,11 +414,6 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
-            </File>
-            <File>
-              <FileName>port_init.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\MCAL\PORT\port_init.c</FilePath>
             </File>
           </Files>
         </Group>
