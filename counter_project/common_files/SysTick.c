@@ -36,6 +36,6 @@ void SysTick_delayms(uint32_t delay){
 	for(int i=0;i<(int)(counts/0xFFFFFF);i++){
 		SysTick_delay(16000000-1);
 	}
-	SysTick_delay((((float)counts/0xFFFFFF)-((int)(counts/0xFFFFFF)))*16000000-1);
+	SysTick_delay((((double)counts/0xFFFFFF)-((int)(counts/0xFFFFFF)))*16000000-1);
 	}
 }
