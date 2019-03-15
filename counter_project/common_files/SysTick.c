@@ -1,5 +1,3 @@
-
-
 #include <stdint.h>
 #include "tm4c123gh6pm.h"
 #include <math.h>
@@ -31,13 +29,13 @@ void SysTick_delay(uint32_t delay){
 // Time delay using busy wait.
 void SysTick_delayms(uint32_t delay){
   uint32_t counts=(0.001*delay*frequency);
-	if(counts<=16000000){
-    SysTick_delay(counts-1); 		// wait 10ms (assumes 50 MHz clock)
+	if(counts<=(0xFFFFFF-1)){
+    SysTick_delay(counts-1); 		
 	}
 	else {
-	for(int i=0;i<ceil((double)counts/16000000);i++){
+	for(int i=0;i<(int)(counts/0xFFFFFF);i++){
 		SysTick_delay(16000000-1);
 	}
+	SysTick_delay((((float)counts/0xFFFFFF)-((int)(counts/0xFFFFFF)))*16000000-1);
 	}
-  
 }
