@@ -34,6 +34,8 @@
 #define CURSOR_OFF 0x0C
 #define CURSOR_ON 0x0E
 #define SET_CURSOR_LOCATION 0x80 
+#define CURSOR_BLINKING 0x0F
+#define WAKEUP_COMMAND 0x30
 
 /*******************************************************************************
  *                      Functions Prototypes                                   *
