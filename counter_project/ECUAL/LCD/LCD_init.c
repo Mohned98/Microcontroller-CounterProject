@@ -16,10 +16,10 @@ void LCD_init(void){
 	Port_SetPinDirection(LCD_CTRL_PORT, 1<<E, PORT_PIN_OUT );
 
 	Port_Init(LCD_DATA_PORT); // port B 
-	Port_SetPinDirection(LCD_CTRL_PORT, 1<<RS, PORT_PIN_OUT );
-	Port_SetPinDirection(LCD_CTRL_PORT, 1<<RW, PORT_PIN_OUT );
+	Port_SetPinDirection(LCD_DATA_PORT, 1<<RS, PORT_PIN_OUT );
+	Port_SetPinDirection(LCD_DATA_PORT, 1<<RW, PORT_PIN_OUT );
 	SysTick_delay_ms(1);
-	Port_SetPinDirection(LCD_CTRL_PORT, 1<<E, PORT_PIN_OUT );
+	Port_SetPinDirection(LCD_DATA_PORT, 1<<E, PORT_PIN_OUT );
 	
 	
 	LCD_sendCommand(WAKEUP_COMMAND);                //wakeup command
