@@ -9,10 +9,15 @@ void Reset(void); /*Reset of the counter function*/
 void SystemInit(void){}
 	
 int main(void)
-{
+{       /*Initialization of LCD & push buttons*/
+	LCD_init();
+	LCD_goToRowColumn(0x8,0x86);
+	 Button_Init(0x03, 0x07, PULL_UP);
 		while(1) 
 		{
-			 
+			Button_ActOnHighLevel( 0x03,0x01,*Increment );
+	  	        Button_ActOnFallingEdge( 0x03, 0x02, *Reset );
+			Button_ActOnRisingEdge( 0x03, 0x03, *Decrement ); 
 		}
 	
 }
