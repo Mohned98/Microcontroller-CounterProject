@@ -12,6 +12,6 @@
 void LCD_intgerToString(int data)
 {
 	char string[16];
-sprintf(string,"%d",data);
+	sprintf(string,"%d",data);
 	LCD_displayString(string);
 }
