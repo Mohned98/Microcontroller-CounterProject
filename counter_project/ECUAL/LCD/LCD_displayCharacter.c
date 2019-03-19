@@ -14,6 +14,7 @@ void LCD_displayCharacter(uint8 data)
 	DIO_WritePort(LCD_CTRL_PORT,1<<E,STD_HIGH);
 	SysTick_delay_ms(1);
 	DIO_WritePort(LCD_DATA_PORT,data,STD_HIGH);
+	DIO_WritePort(LCD_DATA_PORT,~data,STD_LOW);
 	SysTick_delay_ms(1);
 	DIO_WritePort(LCD_CTRL_PORT,1<<E,STD_LOW);
 	SysTick_delay_ms(1);
