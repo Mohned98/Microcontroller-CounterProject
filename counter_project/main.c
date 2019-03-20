@@ -1,23 +1,32 @@
-#include "MACROS.h"
-#include "STANDARD_TYPES.h"
+#include "port.h"
+#include "DIO.h"
+#include "SysTick.h"
+#include "button.h"
+#include "lcd.h"
+
+#define BUTTONS_PORT 0
+#define INCREMENT_BUTTON 2
+#define DECREMENT_BUTTON 4
+#define RESET_BUTTON 3
+#define BUTTONS_MASK (1<<INCREMENT_BUTTON)|(1<<DECREMENT_BUTTON)|(1<<RESET_BUTTON)
 uint32 count=0;
 
 void Increment(void); /*Incrementation of the counter function*/
 void Decrement(void); /*Decrementation of the counter function*/
 void Reset(void); /*Reset of the counter function*/
 
-void SystemInit(void){}
 	
 int main(void)
-{       /*Initialization of LCD & push buttons*/
+{    SysTick_Init();
+	/*Initialization of LCD & push buttons*/
 	LCD_init();
-	LCD_goToRowColumn(0x8,0x86);
-	 Button_Init(0x03, 0x07, PULL_UP);
+	LCD_goToRowColumn(0,7);
+	 Button_Init(BUTTONS_PORT,BUTTONS_MASK, PULL_DOWN);
 		while(1) 
 		{
-			Button_ActOnHighLevel( 0x03,0x01,*Increment );
-	  	        Button_ActOnFallingEdge( 0x03, 0x02, *Reset );
-			Button_ActOnRisingEdge( 0x03, 0x03, *Decrement ); 
+		Button_ActOnHighLevel(BUTTONS_PORT,INCREMENT_BUTTON,Increment );
+		Button_ActOnRisingEdge(BUTTONS_PORT, RESET_BUTTON, Decrement );
+		Button_ActOnFallingEdge(BUTTONS_PORT, DECREMENT_BUTTON, Reset );
 		}
 	
 }
