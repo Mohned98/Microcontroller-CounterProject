@@ -34,6 +34,8 @@ int main(void)
 /*Reset of the counter function*/
 void Reset(void){
 	count=0;
+	LCD_clearScreen();
+	LCD_goToRowColumn(0,7);
 	LCD_intgerToString(count); /*display on LCD*/
 }
 
@@ -42,8 +44,11 @@ void Increment(void){
 	if(count==999) /*Reset the counter when reaching 999*/
 		Reset();
 	else
+	{
 		count++;
-	LCD_intgerToString(count); /*display on LCD*/
+		LCD_goToRowColumn(0,7);
+		LCD_intgerToString(count); /*display on LCD*/
+	}
 }
 
 /*Decrementation of the counter function*/
@@ -52,5 +57,7 @@ void Decrement(void){
 		count=999;
 	else
 		count--;
+	LCD_clearScreen();
+	LCD_goToRowColumn(0,7);
 	LCD_intgerToString(count); /*display on LCD*/
 }
